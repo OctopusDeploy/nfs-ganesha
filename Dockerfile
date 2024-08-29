@@ -20,8 +20,6 @@
 # List of Fedora versions: https://en.wikipedia.org/wiki/Fedora_version_history#Version_history
 ARG FEDORA_VERSION=40
 
-
-
 FROM registry.fedoraproject.org/fedora:${FEDORA_VERSION} AS build
 
 # Build ganesha from source, install it to /usr/local and a use multi stage build to have a smaller image
@@ -89,8 +87,7 @@ RUN microdnf install -y \
 	xfsprogs \
     && microdnf clean all
 
-RUN mkdir -p /var/run/dbus \
-    && mkdir -p /octopus
+RUN mkdir -p /var/run/dbus
 
 # add libs from /usr/local/lib64
 RUN echo /usr/local/lib64 > /etc/ld.so.conf.d/local_libs.conf
