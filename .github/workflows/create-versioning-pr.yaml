@@ -25,9 +25,9 @@ jobs:
         path: ~/.pnpm-store
         key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-    - uses: pnpm/action-setup@v2.2.4
+    - uses: pnpm/action-setup@v4
       with:
-        version: 8.15.2
+        version: 9.11.0
         run_install: true
 
     - name: Create Release Pull Request
