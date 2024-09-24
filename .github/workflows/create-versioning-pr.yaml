@@ -3,7 +3,7 @@ name: Version NFS Ganesha Server
 on:
   push:
     branches:
-    - '*'
+    - '**'
     
 jobs:
   version:
