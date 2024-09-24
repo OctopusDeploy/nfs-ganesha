@@ -39,11 +39,11 @@ jobs:
         run: |
             if ${{ steps.isVersioningCommit.outputs.isVersioningCommit }}; then
                 tagVersion=${{ steps.version.outputs.version }}
-                tags="octopusdeploy/nfs-ganesha:$tagVersion,${{ ARTIFACTORY_DOCKER_REPO_HOSTNAME }}/octopusdeploy/nfs-ganesha:$tagVersion,octopusdeploy/nfs-ganesha:latest,{{ ARTIFACTORY_DOCKER_REPO_HOSTNAME }}/octopusdeploy/nfs-ganesha:latest";
+                tags="octopusdeploy/nfs-ganesha:$tagVersion,${{ secrets.ARTIFACTORY_DOCKER_REPO_HOSTNAME }}/octopusdeploy/nfs-ganesha:$tagVersion,octopusdeploy/nfs-ganesha:latest,${{ secrets.ARTIFACTORY_DOCKER_REPO_HOSTNAME }}/octopusdeploy/nfs-ganesha:latest";
             else
                 : # git describe --tags produces a value matching <tag>-<commits since tag>-<8 char commit hash>
                 tagVersion=$(git describe --tags)
-                tags="${{ ARTIFACTORY_DOCKER_REPO_HOSTNAME }}/octopusdeploy/nfs-ganesha:$tagVersion";
+                tags="${{ secrets.ARTIFACTORY_DOCKER_REPO_HOSTNAME }}/octopusdeploy/nfs-ganesha:$tagVersion";
             fi
             echo "tags=$tags" >> $GITHUB_OUTPUT;
             echo "tags=$tags";
