@@ -1,5 +1,0 @@
----
-"nfs-ganesha": minor
----
-
-test
